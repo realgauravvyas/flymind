@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLYMIND — Interactive Fruit Fly Connectome Playground</title>
+<meta name="description" content="Poke a fruit fly's senses and watch real neural circuits fire. Explore the connectome, train the fly, and listen to its neurons sing.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="ic-cursor" viewBox="0 0 24 24"><path fill="currentColor" d="M4 2l16 8-7 2-2 7z"/></symbol>
+  <symbol id="ic-brain" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a4 4 0 0 0-4 4 4 4 0 0 0-3 6.9A4 4 0 0 0 8 20a4 4 0 0 0 4 2 4 4 0 0 0 4-2 4 4 0 0 0 3-7.1A4 4 0 0 0 16 6a4 4 0 0 0-4-4zm0 2a2 2 0 0 1 2 2h-4a2 2 0 0 1 2-2zM8 8h8a2 2 0 0 1 2 2 2 2 0 0 1-1 1.7l-7 3.6-7-3.6A2 2 0 0 1 6 10a2 2 0 0 1 2-2zm9 6.1a2 2 0 0 1 .5 1.9 2 2 0 0 1-1.5 1.4V20a2 2 0 0 1-1.6-.8A2 2 0 0 0 16 16zM5 14.1l5 2.6v4.2a2 2 0 0 1-1.6.8v-2.6a2 2 0 0 1-1.5-1.4 2 2 0 0 1-.5-1.9z" opacity=".9"/><path fill="currentColor" d="M11 3h2v18h-2z" opacity=".35"/></symbol>
+  <symbol id="ic-eye" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5C6.5 5 2.3 9.6 1 12c1.3 2.4 5.5 7 11 7s9.7-4.6 11-7c-1.3-2.4-5.5-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol>
+  <symbol id="ic-antenna" viewBox="0 0 24 24"><path fill="currentColor" d="M3 3c6 0 11 1 15 5s5 9 5 13h-2c0-4-1-8-4-11S8 5 3 5V3zm0 4c4 0 8 .8 11 3.5S18 16 18 21h-2c0-5-.5-9-3-11.5S7 9 3 9V7z"/><circle cx="4" cy="20" r="2" fill="currentColor"/></symbol>
+  <symbol id="ic-tap" viewBox="0 0 24 24"><path fill="currentColor" d="M9 11V4a2 2 0 1 1 4 0v7h1a2 2 0 0 1 2 2v5a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5v-3l2-2zm2-7a1 1 0 0 0-1 1v9H8V5a1 1 0 1 1 2 0v8h1V4z"/></symbol>
+  <symbol id="ic-net" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm14 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm14 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0-7a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 14a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm7-7a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm-14 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM6 5h4v2H6V5zm8 0h4v2h-4V5zM12 7h1v3h-2V7h1zm4 4h2v4h-2v-4zm-10 0h2v4H8v-4zM6 17h4v2H6v-2zm8 0h4v2h-4v-2zM12 14h1v3h-2v-3h1z"/></symbol>
+  <symbol id="ic-bulb" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-4 12.7V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.3A7 7 0 0 0 12 2zM9 19h6v1a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-1z"/></symbol>
+  <symbol id="ic-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></symbol>
+  <symbol id="ic-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></symbol>
+  <symbol id="ic-sound" viewBox="0 0 24 24"><path fill="currentColor" d="M3 10v4h4l5 5V5L7 10H3zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></symbol>
+  <symbol id="ic-mute" viewBox="0 0 24 24"><path fill="currentColor" d="M3 10v4h4l5 5V5L7 10H3zm18.6 8.2-3.2-3.2A9 9 0 0 0 19.4 12H17a7 7 0 0 1-1.4 4.2l1.4 1.4A9 9 0 0 0 21 12a9 9 0 0 0-7-7v2a7 7 0 0 1 4.2 1.4l3.2 3.2-1.8.2z" opacity=".95"/><path fill="currentColor" d="M4.3 3 3 4.3l16.7 16.7 1.3-1.3z"/></symbol>
+  <symbol id="ic-reset" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></symbol>
+  <symbol id="ic-x" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4L13.4 12z"/></symbol>
+  <symbol id="ic-flask" viewBox="0 0 24 24"><path fill="currentColor" d="M9 2h6v2h-1v3.3l4.7 8.9A3 3 0 0 1 16 21H8a3 3 0 0 1-2.7-4.8L10 7.3V4H9V2zm3 7-2.2 4.2c.9.5 2.1.8 3.2.8 1.1 0 2.3-.3 3.2-.8L12 9z" opacity=".95"/></symbol>
+</symbol>
+</svg>
+
+<div id="app">
+
+  <!-- ============ HEADER ============ -->
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" aria-hidden="true"><use href="#ic-brain"/></svg>
+      <div>
+        <h1>FLYMIND</h1>
+        <p>fruit fly connectome playground</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="stat-neurons">142</b><span>neurons</span></div>
+      <div class="stat"><b id="stat-synapses">642</b><span>synapses</span></div>
+      <div class="stat"><b>125M</b><span>in real brain</span></div>
+    </div>
+    <div class="topbar-actions">
+      <button id="btn-audio" class="icon-btn" title="Toggle sound — ambient lab drone, neuron spikes, wing song"><svg><use href="#ic-mute"/></svg></button>
+      <a class="gh-link" href="https://github.com/" target="_blank" rel="noopener" title="Source on GitHub">GitHub</a>
+    </div>
+  </header>
+
+  <!-- ============ TABS ============ -->
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="arena" role="tab"><svg><use href="#ic-tap"/></svg>Poke the Fly</button>
+    <button class="tab" data-tab="explore" role="tab"><svg><use href="#ic-net"/></svg>Connectome Explorer</button>
+    <button class="tab" data-tab="learn" role="tab"><svg><use href="#ic-bulb"/></svg>Train the Fly</button>
+    <button class="tab" data-tab="song" role="tab"><svg><use href="#ic-sound"/></svg>Courtship Song Lab</button>
+    <button class="tab" data-tab="about" role="tab"><svg><use href="#ic-flask"/></svg>Science</button>
+  </nav>
+
+  <main>
+    <!-- ============ TAB: ARENA ============ -->
+    <section class="view active" id="view-arena">
+      <div class="arena-layout">
+        <div class="arena-canvas-wrap">
+          <canvas id="arena"></canvas>
+          <div class="arena-hud">
+            <div class="hud-pill" id="hud-state">STATE <b>RESTING</b></div>
+            <div class="hud-pill" id="hud-activity">ACTIVITY <b>0</b> Hz</div>
+          </div>
+          <div class="arena-hint" id="arena-hint">Click a glowing hotspot to stimulate a sense… or click the fly itself and see what happens</div>
+        </div>
+        <aside class="side-panel">
+          <h3>Sensory panel</h3>
+          <div class="stim-grid" id="stim-grid">
+            <button class="stim" data-odour="vinegar"><span class="s-ic">🧪</span><b>Vinegar</b><i>acetic acid · Or42b</i></button>
+            <button class="stim" data-odour="geosmin"><span class="s-ic">🟢</span><b>Geosmin</b><i>microbial odour · Or56a</i></button>
+            <button class="stim" data-odour="co2"><span class="s-ic">💨</span><b>CO₂</b><i>stress odour · Gr21a</i></button>
+            <button class="stim" data-odour="phenyl"><span class="s-ic">🍌</span><b>Phenylethanol</b><i>fruit · Or43b</i></button>
+          </div>
+
+          <h3>Live oscilloscope</h3>
+          <canvas id="scope" height="120"></canvas>
+
+          <h3>Circuit trace</h3>
+          <div class="trace" id="trace"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ TAB: EXPLORE ============ -->
+    <section class="view" id="view-explore">
+      <div class="explore-layout">
+        <div class="graph-wrap">
+          <canvas id="graph"></canvas>
+          <div class="graph-legend">
+            <span class="lg"><i class="dot" style="background:var(--c-sensory)"></i>sensory</span>
+            <span class="lg"><i class="dot" style="background:var(--c-mid)"></i>relay</span>
+            <span class="lg"><i class="dot" style="background:var(--c-learn)"></i>learning</span>
+            <span class="lg"><i class="dot" style="background:var(--c-motor)"></i>motor</span>
+            <span class="lg"><i class="dot" style="background:var(--c-mod)"></i>modulatory</span>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>Search neurons</h3>
+          <input id="search" type="text" placeholder="type a name… (e.g. MBON, PAM, fru)" autocomplete="off">
+          <div class="results" id="search-results"></div>
+          <div id="node-card" class="node-card"></div>
+          <h3>Pathway tracer</h3>
+          <p class="small muted">Click any neuron, then another, to animate the shortest signal path between them through real synapses.</p>
+          <button id="btn-path-clear" class="ghost-btn hidden">clear path</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ TAB: LEARN ============ -->
+    <section class="view" id="view-learn">
+      <div class="learn-layout">
+        <div class="learn-canvas-wrap">
+          <canvas id="learn"></canvas>
+          <div class="learn-controls">
+            <label class="ctl"><span>Odour A</span><select id="learn-odour-a">
+              <option value="vinegar">Vinegar (rewarded)</option>
+              <option value="phenyl">Phenylethanol</option>
+              <option value="geosmin">Geosmin</option>
+              <option value="co2">CO₂</option>
+            </select></label>
+            <label class="ctl"><span>Odour B</span><select id="learn-odour-b">
+              <option value="geosmin">Geosmin (shock)</option>
+              <option value="phenyl">Phenylethanol</option>
+              <option value="vinegar">Vinegar</option>
+              <option value="co2">CO₂</option>
+            </select></label>
+            <label class="ctl"><span>Reward is</span><select id="learn-reward">
+              <option value="A">Odour A → sugar</option>
+              <option value="B">Odour B → sugar</option>
+            </select></label>
+          </div>
+          <div class="learn-actions">
+            <button id="btn-train" class="primary-btn"><svg><use href="#ic-play"/></svg>Train 1 trial</button>
+            <button id="btn-train-10" class="ghost-btn">×10</button>
+            <button id="btn-test" class="ghost-btn">Test choice</button>
+            <button id="btn-reset-learn" class="ghost-btn danger"><svg><use href="#ic-reset"/></svg>Reset brain</button>
+          </div>
+          <div class="learn-stats">
+            <div class="stat-card"><b id="ls-trials">0</b><span>trials</span></div>
+            <div class="stat-card"><b id="ls-perf">50%</b><span>correct (perf. index)</span></div>
+            <div class="stat-card"><b id="ls-mbon">0.00</b><span>MBON tilt (A − B)</span></div>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>Mushroom body model</h3>
+          <p class="small muted">This is a playable model of the fly's <b>real</b> learning circuit, the mushroom body (MB). The MB works like a <i>copyback</i> memory: odours are tagged with KC “barcodes”, then DANs deliver reward/shock signals that rewrite the KC→MBON synapses (olfactory associative learning, Heisenberg et&nbsp;al.).</p>
+          <canvas id="mb-weights" height="140"></canvas>
+          <p class="small muted" id="mb-caption">KC→MBON weights start uniform. Train to see them split.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ TAB: SONG ============ -->
+    <section class="view" id="view-song">
+      <div class="song-layout">
+        <div class="song-canvas-wrap">
+          <canvas id="song"></canvas>
+          <div class="song-hud">
+            <div class="hud-pill">PULSE SONG <b id="song-bpm">0</b> IPI ms</div>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>Parameters</h3>
+          <label class="ctl slider"><span>Pulse rate</span><input type="range" id="sg-rate" min="8" max="40" value="20" step="1"><b id="sg-rate-v">20/s</b></label>
+          <label class="ctl slider"><span>Interpulse interval</span><input type="range" id="sg-leg" min="0" max="100" value="35" step="1"><b id="sg-leg-v">35%</b></label>
+          <label class="ctl slider"><span>Amplitude</span><input type="range" id="sg-amp" min="0" max="100" value="60" step="1"><b id="sg-amp-v">60%</b></label>
+          <label class="ctl slider"><span>Females nearby</span><input type="range" id="sg-fem" min="0" max="5" value="1" step="1"><b id="sg-fem-v">1</b></label>
+          <div class="learn-actions">
+            <button id="btn-song-play" class="primary-btn"><svg><use href="#ic-play"/></svg><span>Sing</span></button>
+            <button id="btn-song-stop" class="ghost-btn"><svg><use href="#ic-pause"/></svg>Stop</button>
+          </div>
+          <h3>What you're hearing</h3>
+          <p class="small muted">Male flies vibrate a wing to produce a <b>pulse song</b> — trains of ~200&nbsp;Hz wing clicks at ~35&nbsp;ms interpulse intervals — which makes females more receptive (Rybak et&nbsp;al., review). P1 neurons (fru<sup>+</sup>) trigger courtship and song; dsx<sup>+</sup> pCd neurons gate it. This synthesizes the actual waveform from wing-beat physics.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ TAB: ABOUT ============ -->
+    <section class="view" id="view-about">
+      <div class="about">
+        <h2>The science inside this toy</h2>
+        <p>All neuron names, brain regions, and circuit motifs in FLYMIND are taken from real published fruit-fly connectome data — the <a href="https://flywire.ai" target="_blank" rel="noopener">FlyWire female brain</a>, the <a href="https://male-cns.janelia.org/" target="_blank" rel="noopener">male CNS connectome</a> (released Sept 2026 by Janelia + Google: <a href="https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/" target="_blank" rel="noopener">blog post here</a>), and decades of Drosophila circuit biology. The full male map has ~166,000 neurons and ~125M synapses; we obviously can't ship that in a browser, so we distilled the science into ~140 key neurons across 8 landmark circuits.</p>
+        <div class="cards">
+          <div class="card"><h4>🧪 Olfaction</h4><p>Odour → ORNs (Or42b etc.) → antennal lobe glomeruli (V) → projection neurons (V_PN) → lateral horn (quick innate) + mushroom body (learnable). Geosmin (Or56a) is hardwired avoidance: microbes on food can be toxic.</p></div>
+          <div class="card"><h4>👁 Vision</h4><p>Photoreceptors → lamina → medulla (columnar, Tm neurons) → lobula (T4/T5 detect motion directions) → lobula plate tangential cells (HS/VS) → neck/motor. This is the circuit that won a Nobel for fly vision.</p></div>
+          <div class="card"><h4>🔊 Hearing</h4><p>Johnston's organ neurons (JO) → APN1 → wedge (WED) → VNC. Females hear the male's pulse song; males fight over who sings.</p></div>
+          <div class="card"><h4>⚡ Touch & balance</h4><p>Chordotonal organs (ch) stretch-receptor → VNC → wing/halt motor neurons. Bristle mechanoreceptors trigger the giant-fibre escape reflex — the fly's 20&nbsp;ms jump.</p></div>
+          <div class="card"><h4>🎓 Mushroom body learning</h4><p>~2000 Kenyon cells receive sparse odour "barcodes". Dopaminergic DANs (PAM = reward, PPL1 = punishment) converge on KC→MBON synapses; reward weakens avoidance MBONs. 3-term rewriteable memory — what you train in the "Train the Fly" tab.</p></div>
+          <div class="card"><h4>💕 Courtship</h4><p>P1 (fru⁺) ↔ pCd (dsx⁺) mutual excitation biases courtship; fruᴹ anatomical sites in the male are the classic dimorphism — the very example highlighted in the male-vs-female connectome comparison.</p></div>
+          <div class="card"><h4>🏃 Escape</h4><h4></h4><p>Giant fibre (GFN1) → TTMneuron → jump. The fastest known reflex arc; the fly leaps before "seeing" the threat.</p></div>
+          <div class="card"><h4>🍬 Taste</h4><p>Gr66a bitter neurons → SOG/SEZ projection → feeding suppression. Sugar via Gr5a excites feeding; bitter wins to protect the fly.</p></div>
+        </div>
+        <h2>What's <i>real</i> vs. simplified</h2>
+        <p class="small muted">Real: neuron class names and counts of the actual male/female connectomes, circuit logic (who excites/inhibits whom), behaviour outcomes (geosmin = avoid, vinegar = approach, song = courtship), MB learning rule (DAN-gated plasticity). Simplified: we model ~140 neurons not 166,000; "synapse counts" are scaled down; positions are stylized for readability, not microscopy-accurate.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast-container"></div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/brain.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/arena.js"></script>
+<script src="js/explore.js"></script>
+<script src="js/learn.js"></script>
+<script src="js/song.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
