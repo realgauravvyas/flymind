@@ -1,5 +1,7 @@
 # 🧠 FLYMIND — Interactive Fruit Fly Connectome Playground
 
+**Live demo: https://realgauravvyas.github.io/flymind/** — no server, no setup, no dependencies.
+
 **Poke a fruit fly's senses. Watch real neural circuits light up. Train its brain. Listen to it sing.**
 
 ![Arena — vinegar cascade firing through the holo-fly's brain](assets/demo-arena.png)
@@ -7,6 +9,18 @@
 A neon-wireframe fly under a lab scanner: poke its senses, and real named neurons fire across its brain in cascades — with live oscilloscope, circuit trace, and sound. Built on the complete fruit fly connectomes — the [FlyWire female brain](https://flywire.ai) and the [male CNS connectome](https://male-cns.janelia.org/) (166,000 neurons, 125M synapses) published by HHMI Janelia + Google Research ([blog post](https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/)).
 
 > Everyone built chess bots and sudoku solvers on connectomes. This one is different — it's a **living lab pet**: an interactive fly whose neurons actually fire, learn, and sing, using the real circuit motifs from published Drosophila connectomics.
+
+## Visual identity — the third fly
+
+FLYMIND completes a trilogy of fly-connectome experiments by the same author, each a deliberately different fly:
+
+| Project | The fly | The idea |
+|---|---|---|
+| [AFTERWING](https://github.com/realgauravvyas/afterwing) | jewel-toned wanderer — iridescent teal, violet bands, lilac wings | a playable 3D counterfactual lab: sever one connection, watch twins diverge |
+| [FlyGambit](https://github.com/realgauravvyas/fly-gambit) | specimen under a fluorescence microscope — GFP-green lobula, tdTomato-red mushroom body | a fruit fly learns chess live in your browser, with silenceable brain regions |
+| **FLYMIND** (this) | **neon holo-wireframe under a lab scanner** — translucent cyan wireframe, magenta compound eyes | poke a fly's *senses* and watch the real circuits behind the behaviours fire, learn, and sing |
+
+One is a living insect, one is a labelled brain doing science — this one is the **specimen you can touch**.
 
 ## 🎮 What you can do
 
@@ -113,14 +127,27 @@ npm run audit    # → 21/21 gameplay + pixel checks passed, 0 console errors
 node tools/audio-perf-audit.cjs  # → 8/8: real WebAudio output (RMS-measured), queue drains, DOM capped, 3 MB heap
 ```
 
-## 📚 Sources
+## Credits & inspired by
 
-- [A connectomics milestone: mapping the complete male fruit fly brain](https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/) — Google Research, Sept 2026
-- [Male CNS connectome](https://male-cns.janelia.org/) · Paper: *Sexual dimorphism in the complete connectome of the Drosophila male CNS*, Cell 2026
-- [FlyWire female connectome](https://flywire.ai) · Nature 2024/2026
-- Owald & Waddell — *Dopaminergic memories in mushroom bodies* (learning rule)
-- Rybak et al. — *Drosophila courtship song* (pulse song parameters)
-- Takemura, Chklovskii et al. — visual circuit connectomes (T4/T5, HS/VS)
+- Inspired by [*A connectomics milestone: mapping the complete male fruit fly brain*][blog]
+  (Google Research + HHMI Janelia, 2026) and the [FlyWire female connectome][flywire]
+  (Murthy & Seung labs, *Nature*).
+- Companion projects: [AFTERWING](https://github.com/realgauravvyas/afterwing) —
+  a playable 3D counterfactual lab on the fruit fly connectome, and
+  [FlyGambit](https://github.com/realgauravvyas/fly-gambit) — a Drosophila
+  connectome learns chess live in your browser.
+- The fly is drawn procedurally on a 2D canvas — a stylized neon wireframe, not a scan.
+- Sound is fully procedural (WebAudio oscillators + filtered noise), no audio files.
+- Zero build step, zero runtime dependencies — one static page, plain JS.
+
+Circuit biology distilled from the published connectomes and classic literature:
+[Male CNS connectome](https://male-cns.janelia.org/) (*Cell* 2026) ·
+Owald & Waddell — *dopaminergic memories in mushroom bodies* (learning rule) ·
+Rybak et al. — *Drosophila courtship song* (pulse-song parameters) ·
+Takemura, Chklovskii et al. — visual circuit connectomes (T4/T5, HS/VS).
+
+[blog]: https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/
+[flywire]: https://flywire.ai
 
 ## License
 
