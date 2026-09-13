@@ -37,6 +37,11 @@ body{
 .icon-btn.on{color:var(--acc);border-color:var(--acc)}
 .gh-link{font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line);padding:10px 14px;border-radius:10px;transition:.2s}
 .gh-link:hover{color:var(--acc);border-color:var(--acc)}
+/* GitHub logo button — matches the audio icon-btn style */
+#gh-btn{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;
+  background:var(--panel);border:1px solid var(--line);color:#dce6ff;cursor:pointer;transition:.2s}
+#gh-btn svg{width:20px;height:20px}
+#gh-btn:hover{color:var(--acc);border-color:var(--acc);box-shadow:0 0 12px #00e5ff44;transform:translateY(-1px)}
 
 /* ---- tabs ---- */
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
