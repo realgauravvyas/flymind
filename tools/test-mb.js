@@ -1,10 +1,11 @@
-const fs = require('fs');
+const fs = require('fs'), path = require('path');
 // DOM stub for headless test
 global.document = { getElementById: () => ({ textContent:'', set innerHTML(v){}, style:{} }), querySelectorAll: () => [] };
 global.window = { addEventListener: ()=>{} };
 global.LearnDraw = { draw: ()=>{} };
-const code = fs.readFileSync('js/data.js','utf8') + '\n' +
-  fs.readFileSync('js/learn.js','utf8').split('/* ---------------- drawing ---------------- */')[0] + '\n' +
+const root = path.join(__dirname, '..');
+const code = fs.readFileSync(path.join(root, 'js/data.js'),'utf8') + '\n' +
+  fs.readFileSync(path.join(root, 'js/learn.js'),'utf8').split('/* ---------------- drawing ---------------- */')[0] + '\n' +
 `
 MB.init();
 console.log('vinegar tilt before:', MB.tiltFor('vinegar').toFixed(3));

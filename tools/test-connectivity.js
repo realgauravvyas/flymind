@@ -1,6 +1,7 @@
-const fs=require('fs');
-global.AUDIO={on:false,spike:()=>{}};
-const code = fs.readFileSync('js/data.js','utf8')+'\n'+
+const fs = require('fs'), path = require('path');
+global.AUDIO = { on: false, spike: () => {} };
+const root = path.join(__dirname, '..');
+const code = fs.readFileSync(path.join(root, 'js/data.js'), 'utf8') + '\n' +
 `
 // BFS reachability: is the whole graph one connected world?
 const ids=NEURONS.map(n=>n.id);

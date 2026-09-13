@@ -1,154 +1,166 @@
-# 🧠 FLYMIND — Interactive Fruit Fly Connectome Playground
+# FLYMIND 🪰🧠
+### Interactive Fruit Fly Connectome & Sensory Electrophysiology Playground
 
-**Live demo: https://realgauravvyas.github.io/flymind/** — no server, no setup, no dependencies.
+<p align="center">
+  <a href="https://realgauravvyas.github.io/connectomics/flymind/">
+    <img src="https://img.shields.io/badge/🚀_LAUNCH_FLYMIND-realgauravvyas.github.io%2Fconnectomics%2Fflymind-00e5ff?style=for-the-badge&logo=google-chrome&logoColor=black" alt="Launch FLYMIND" />
+  </a>
+  <a href="https://realgauravvyas.github.io/connectomics/">
+    <img src="https://img.shields.io/badge/CONNECTOMICS-MASTER_HUB-00e5ff?style=for-the-badge&logo=github&logoColor=white" alt="Connectomics Hub" />
+  </a>
+</p>
+
+[![Connectome Milestone](https://img.shields.io/badge/Connectome-Cell%202026-00e5ff.svg)](https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/)
+[![Live Status](https://img.shields.io/badge/GitHub_Pages-LIVE-00ff88?style=flat-square&logo=github)](https://realgauravvyas.github.io/connectomics/flymind/)
+[![Circuits](https://img.shields.io/badge/Neural_Circuits-42_Classes_%C2%B7_642_Synapses-ff007f?style=flat-square)](https://realgauravvyas.github.io/connectomics/flymind/)
+[![Oscilloscope](https://img.shields.io/badge/Oscilloscope-Real--Time_Firing_Trace-00e5ff?style=flat-square)](https://realgauravvyas.github.io/connectomics/flymind/)
+[![Sound](https://img.shields.io/badge/Procedural_Audio-WebAudio_Zero_Assets-ffb703?style=flat-square)](https://realgauravvyas.github.io/connectomics/flymind/)
+[![Dependencies](https://img.shields.io/badge/Dependencies-Zero_Runtime-brightgreen?style=flat-square)](https://realgauravvyas.github.io/connectomics/flymind/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+
+> 🎮 **Experience the Living Connectome in Your Browser:**  
+> 👉 **[https://realgauravvyas.github.io/connectomics/flymind/](https://realgauravvyas.github.io/connectomics/flymind/)**  
+> *Part of the [CONNECTOMICS Suite](https://realgauravvyas.github.io/connectomics/) by Gaurav Vyas.*
 
 **Poke a fruit fly's senses. Watch real neural circuits light up. Train its brain. Listen to it sing.**
 
-![Arena — vinegar cascade firing through the holo-fly's brain](assets/demo-arena.png)
+FLYMIND is an interactive neuro-computational workbench built directly from published *Drosophila melanogaster* connectomics datasets (the complete [FlyWire female brain][flywire] and Google Research $\times$ HHMI Janelia's complete [Male CNS connectome][blog], *Cell* September 2026).
 
-A neon-wireframe fly under a lab scanner: poke its senses, and real named neurons fire across its brain in cascades — with live oscilloscope, circuit trace, and sound. Built on the complete fruit fly connectomes — the [FlyWire female brain](https://flywire.ai) and the [male CNS connectome](https://male-cns.janelia.org/) (166,000 neurons, 125M synapses) published by HHMI Janelia + Google Research ([blog post](https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/)).
+A neon holo-wireframe fly rests under a virtual laboratory scanner: stimulate its compound eyes, antennal olfactory receptors, mechanosensory bristles, or looming shadow sensors, and watch named action potential cascades propagate across its brain in real time alongside a synchronized digital oscilloscope, synaptic wiring trace, and spatial audio telemetry.
 
-> Everyone built chess bots and sudoku solvers on connectomes. This one is different — it's a **living lab pet**: an interactive fly whose neurons actually fire, learn, and sing, using the real circuit motifs from published Drosophila connectomics.
+---
 
-## Visual identity — the third fly
+## 📸 Interactive Visual Showcase
 
-FLYMIND completes a trilogy of fly-connectome experiments by the same author, each a deliberately different fly:
+| **POKE THE FLY** — Real sensory-motor signal cascades | **CONNECTOME EXPLORER** — Force-directed graph of 42 neuron classes |
+|:--:|:--:|
+| ![Arena](assets/demo-arena.png) | ![Connectome Explorer](assets/demo-explore.png) |
+| **TRAIN THE FLY** — Dopaminergic Mushroom Body conditioning | **COURTSHIP SONG LAB** — Wing vibration acoustic physics |
+| ![Train the Fly](assets/demo-learn.png) | ![Courtship Song Lab](assets/demo-song.png) |
 
-| Project | The fly | The idea |
-|---|---|---|
-| [AFTERWING](https://github.com/realgauravvyas/afterwing) | jewel-toned wanderer — iridescent teal, violet bands, lilac wings | a playable 3D counterfactual lab: sever one connection, watch twins diverge |
-| [FlyGambit](https://github.com/realgauravvyas/fly-gambit) | specimen under a fluorescence microscope — GFP-green lobula, tdTomato-red mushroom body | a fruit fly learns chess live in your browser, with silenceable brain regions |
-| **FLYMIND** (this) | **neon holo-wireframe under a lab scanner** — translucent cyan wireframe, magenta compound eyes | poke a fly's *senses* and watch the real circuits behind the behaviours fire, learn, and sing |
+---
 
-One is a living insect, one is a labelled brain doing science — this one is the **specimen you can touch**.
+## 🔬 Core Interactive Experiment Modes
 
-## 🎮 What you can do
-
-| Tab | Play |
+| Laboratory Tab | Biophysical Mechanism & Gameplay |
 |---|---|
-| **🪰 Poke the Fly** | Click the dashed hotspots — SMELL, SEE, TOUCH, SCARE — or the fly itself. Signals cascade through named neurons (Or42b → V_PN → KC → MBON…) with live oscilloscope + circuit trace. Geosmin? It flees. Vinegar? It approaches. Poke it? Giant-fibre jump reflex. |
-| **🕸 Connectome Explorer** | A force-graph of 42 real neuron classes. Drag, zoom, search (`MBON`, `PAM`, `fru`). Click neurons for their real synapses; click two to animate the shortest signal path between them (BFS over the wiring). |
-| **🎓 Train the Fly** | A playable **mushroom body** — the fly's actual learning circuit. Pick two odours, train sugar/shock pairings, and watch KC→MBON synapse weights rewrite (dopamine-gated depression, like the real MB). Then run a free-choice test and see which way the fly walks. |
-| **🎵 Courtship Song Lab** | Males vibrate a wing to sing a ~200 Hz **pulse song** (~35 ms interpulse interval). Sliders control pulse rate/IPI/amplitude — real WebAudio synthesis — and females on-screen become receptive when they "hear" it (P1 → vpoDN → wing motor). |
-| **🔬 Science** | Every circuit in the app explained, with the real papers behind them, plus an honest "what's real vs simplified" table. |
+| **🪰 Poke the Fly** | Trigger realistic sensory cues (SMELL, SEE, TOUCH, SCARE). Signals propagate through verified biological routes: `Or42b → V_PN → KC → MBON` (attraction to apple cider vinegar), `Or56a → DA1_PN` (hardwired avoidance to harmful geosmin mold), and mechanical touch triggering the **Giant Fiber escape jump reflex** (`GFN → TTMn`). |
+| **🕸 Connectome Explorer** | Interactive force-directed topological graph of 42 biological neuron classes. Search for specific neuro-types (`MBON`, `PAM`, `fru`, `vpoDN`). Select any two neurons to compute and animate the shortest physiological signal pathway (BFS over real synaptic edges). |
+| **🎓 Train the Fly** | Playable **Mushroom Body** associative memory model. Pair odorants with sugar reward (PAM dopamine neurons) or electric shock (PPL1 dopamine neurons) to witness real-time synaptic depression of KC $\to$ MBON connections (Owald & Waddell rule). Then run free-choice T-maze tests to verify behavioral preference shifts. |
+| **🎵 Courtship Song Lab** | Male *Drosophila* extend and oscillate a single wing to produce a species-specific ~200 Hz **pulse song** (~35 ms interpulse interval). Adjust pulse parameters in real time via Web Audio API synthesis and observe female acoustic receptivity behaviors governed by the `P1 → vpoDN → wing motor` courtship pathway. |
+| **🔬 Science Dossier** | Comprehensive scientific breakdown detailing every circuit motif, published literature citations, transmitter profiles, and honest biological simplifications. |
 
-![Train the Fly — mushroom body memory after 8 sugar trials](assets/demo-learn.png)
+---
 
-![Connectome Explorer — pathway traced from P1 to the jump motor neuron](assets/demo-explore.png)
+## 🧬 Biological Neuroanatomy & Wiring Ground Truth
 
-**Pro tip:** hit the speaker (top-right) — an ambient lab drone swells with brain activity, every firing neuron pings a pitch-blip keyed to its cell class, and the courtship song is a layered synthesis of real wing-beat physics (fundamental + harmonic + noise transient).
+FLYMIND utilizes authentic neuron nomenclature and connectivity logic from published EM reconstructions:
 
-![Courtship Song Lab — pulse song with females responding](assets/demo-song.png)
-
-![Science tab — every circuit explained with sources](assets/demo-science.png)
-
-## 🚀 Run it
-
-No build. No dependencies to run — just static files. (npm is only for the dev/test tooling.)
-
-```bash
-npm start          # serve on http://localhost:8123
-# or any static server works
-npx serve .
-python -m http.server 8000
+```
+  [ SENSORY PERCEPTION ]
+    • Olfaction: Or42b (Vinegar / Attraction), Or56a (Geosmin / Toxic Flee), Gr21a (CO2 Panic)
+    • Vision: R1–R6 Photoreceptors, T4/T5 Motion Detectors, HS/VS Wide-Field Tangential Cells
+    • Mechanosensation: Johnston's Organ (JO-A1 Acoustic Hearing), Bristle Touch Sensors
+             │
+             ▼
+  [ CENTRAL ROUTING & LEARNING ]
+    • Projection Neurons: V_PN (Attraction), DA1_PN (Avoidance), DL5_PN
+    • Associative Memory: 42 Kenyon Cells (KCs) + APL Feedback Interneuron
+    • Neuromodulation: PAM Dopaminergic Neurons (Reward), PPL1 Clusters (Punishment)
+    • Output Valuation: MBON-$\alpha$, MBON-$\beta$ (Driving Approach vs Avoidance Valence)
+             │
+             ▼
+  [ DESCENDING MOTOR PATHWAYS ]
+    • Giant Fiber Neuron (GFN): Monosynaptic escape jump reflex
+    • MDN (Moonwalker): Reverse backward walking command
+    • P1 & pCd Hub: Male-specific courtship excitation and song initiation
+    • vpoDN: Descending motor command driving unilateral wing oscillation
+             │
+             ▼
+  [ EFFECTORS ]
+    • TTMn: Tergal Trochanter jump muscle activation
+    • WSN / Wing Motor: Flight and acoustic courtship vibrations
 ```
 
-## 🌐 Deploy to GitHub Pages
+---
 
-1. Create a new GitHub repo (e.g. `flymind`)
-2. Push these files:
+## 🧪 Automated Testing & Headless Verification
+
+FLYMIND features an extensive automated test suite ensuring neural connectivity and learning integrity:
 
 ```bash
-git init
-git add .
-git commit -m "FLYMIND: interactive fruit fly connectome playground"
-git branch -M main
-git remote add origin https://github.com/<you>/flymind.git
-git push -u origin main
+# Run all 4 headless validation suites
+npm test
 ```
 
-3. **Settings → Pages → Source: `main` / root** → Save
-4. Live at `https://<you>.github.io/flymind/` in ~1 minute.
+**Individual Component Tests:**
+```bash
+node tools/test-mb.js            # Learning Rule: Sugar flips odor valence (0.00 -> +0.46)
+node tools/test-cascade.js       # Signal Cascades: Verify sequential firing & termination
+node tools/test-connectivity.js  # Synaptic Connectivity: 1,600 neuron pairs reachable
+node tools/test-integration.js   # DOM bindings, stim buttons, zero cycle deadlocks
+```
 
-Also deploys as-is to Netlify (drag the folder), Vercel, or Cloudflare Pages.
+---
 
-## 🧬 What's real vs simplified
-
-Honest science, clearly labeled in the app's **Science** tab:
-
-**Real (from published connectomes & circuit literature):**
-- Neuron classes and names: ORNs (Or42b, Or56a, Gr21a…), projection neurons, Kenyon cells, MBONs, DANs (PAM/PPL1), APL, T4/T5 motion detectors, HS/VS tangential cells, giant fibre, P1/pCd courtship neurons, Johnston's organ → APN1, Gr5a/Gr66a taste…
-- Circuit logic: who excites/inhibits whom — e.g. P1↔pCd mutual excitation, APL feedback inhibition for sparse KC codes, dopamine compartment rules (PAM = reward, PPL1 = punishment)
-- Behaviour outcomes: geosmin = hardwired avoidance (it means microbes), vinegar = approach, bitter Gr66a = suppress feeding
-- The MB learning rule: reward-modulated depression of active KC→MBON synapses (Owald & Waddell; Heisenberg)
-- Courtship song: ~200 Hz pulses, ~35 ms IPI (Rybak et al.), P1 → vpoDN → wing path
-
-**Simplified (for the browser):**
-- ~42 neurons here vs 166,000 in the real male map (125M synapses vs ~60 here)
-- Region positions are stylized for readability, not microscopy coordinates
-- Firing dynamics are toy event-propagation, not biophysical Hodgkin-Huxley
-- The MB shows 42 KCs, not the real ~2,000
-
-## 📁 Files
+## 📁 Repository Structure
 
 ```
 flymind/
-├── index.html        # single-page app shell
-├── css/style.css     # neon-lab theme
+├── index.html        # Complete multi-tab scientific laboratory interface
+├── css/style.css     # Neon-wireframe lab HUD and oscilloscope styling
 ├── js/
-│   ├── data.js       # neurons, synapses, circuits (the science)
-│   ├── brain.js      # event-driven firing engine
-│   ├── arena.js      # interactive fly canvas
-│   ├── explore.js    # force-graph connectome explorer
-│   ├── learn.js      # mushroom body learning model
-│   ├── song.js       # courtship song lab canvas
-│   ├── audio.js      # WebAudio spikes + pulse-song synth
-│   └── main.js       # wiring: tabs, scope, trace, toasts
-└── tools/            # headless tests + browser playthrough audit
+│   ├── data.js       # Biological neuron attributes, transmitters & synaptic matrices
+│   ├── brain.js      # Event-driven action potential propagation engine
+│   ├── arena.js      # Interactive 2D neon fly canvas + hotspot sensors
+│   ├── explore.js    # Force-directed connectome graph & BFS pathfinder
+│   ├── learn.js      # Mushroom body dopaminergic plasticity simulator
+│   ├── song.js       # Courtship acoustic wing-oscillation canvas
+│   ├── audio.js      # Procedural Web Audio API spike blips & song synthesis
+│   └── main.js       # Tab state machine, oscilloscope trace, UI telemetry
+└── tools/            # Headless Node.js test runners & browser playthrough audits
 ```
 
-## 🧪 Test
+---
 
-All of these are **actually run and passing** — the app was played by a headless browser before shipping:
+## 🌐 Complete Connectomics Ecosystem
 
-```bash
-npm test                              # 4 headless suites: learning, cascades, connectivity, integrity
-node tools/test-mb.js                 # learning rule: sugar flips odour valence 0.00 → +0.46
-node tools/test-cascade.js            # cascades fire the right neurons in order & terminate
-node tools/test-connectivity.js       # all 1600 neuron pairs reachable via real synapses
-node tools/test-integration.js        # DOM ids, synapse integrity, no infinite loops
-```
+FLYMIND is part of the [**CONNECTOMICS**](https://realgauravvyas.github.io/connectomics/) simulation suite:
 
-**Full playthrough audit** (needs Chrome + `npm install`):
+- ⚽ **[FLYKICK](https://realgauravvyas.github.io/connectomics/flykick/):** 2 teams of neural flies play football with real-time Brain Cam and manual possession override.
+- ♟️ **[FlyGambit](https://realgauravvyas.github.io/connectomics/fly-gambit/):** Sparse *Drosophila* connectome learning chess with interactive mid-game brain lesioning.
+- 🏃 **[FlySprint](https://realgauravvyas.github.io/connectomics/fly-sprint/):** 1–5 evolved flies with 94-weight neural gait controllers racing 100m–400m and hurdles.
+- 🔬 **[MUSCA](https://realgauravvyas.github.io/connectomics/musca/):** 166,700 reconstructed neurons with 2.82M edges and reverse behavior search.
+- ⚡ **[166k](https://realgauravvyas.github.io/connectomics/166k/):** Large-scale Leaky Integrate-and-Fire (LIF) spiking electrophysiology with dopamine conditioning.
+- 🌌 **[SYNAPTICA](https://realgauravvyas.github.io/connectomics/synaptica/):** 12 mapped neuropil hubs with real-time Hebbian plasticity tracking.
+- 🪰 **[DROSOMIND](https://realgauravvyas.github.io/drosomind/):** Articulated 3D male fly with bio-acoustic courtship song synthesis.
 
-```bash
-chrome --headless --remote-debugging-port=9222 &
-npm run audit    # → 21/21 gameplay + pixel checks passed, 0 console errors
-node tools/audio-perf-audit.cjs  # → 8/8: real WebAudio output (RMS-measured), queue drains, DOM capped, 3 MB heap
-```
+---
 
-## Credits & inspired by
+## 📚 Scientific References
 
-- Inspired by [*A connectomics milestone: mapping the complete male fruit fly brain*][blog]
-  (Google Research + HHMI Janelia, 2026) and the [FlyWire female connectome][flywire]
-  (Murthy & Seung labs, *Nature*).
-- Companion projects: [AFTERWING](https://github.com/realgauravvyas/afterwing) —
-  a playable 3D counterfactual lab on the fruit fly connectome, and
-  [FlyGambit](https://github.com/realgauravvyas/fly-gambit) — a Drosophila
-  connectome learns chess live in your browser.
-- The fly is drawn procedurally on a 2D canvas — a stylized neon wireframe, not a scan.
-- Sound is fully procedural (WebAudio oscillators + filtered noise), no audio files.
-- Zero build step, zero runtime dependencies — one static page, plain JS.
-
-Circuit biology distilled from the published connectomes and classic literature:
-[Male CNS connectome](https://male-cns.janelia.org/) (*Cell* 2026) ·
-Owald & Waddell — *dopaminergic memories in mushroom bodies* (learning rule) ·
-Rybak et al. — *Drosophila courtship song* (pulse-song parameters) ·
-Takemura, Chklovskii et al. — visual circuit connectomes (T4/T5, HS/VS).
+- Google Research, HHMI Janelia, FlyEM Consortium:  
+  *"Sexual dimorphism in the complete connectome of the Drosophila male central nervous system"*, **Cell** (September 2026).
+- Google Research Announcement:  
+  [A connectomics milestone: Mapping the complete male fruit fly brain][blog].
+- FlyWire Whole-Brain Consortium ([flywire.ai][flywire]).
+- Owald & Waddell (2015): *Olfactory learning in Drosophila mushroom bodies*.
 
 [blog]: https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/
 [flywire]: https://flywire.ai
 
-## License
+---
 
-MIT — see [LICENSE](LICENSE). Neuron data distilled from published open connectomes; this is an educational visualization, not a research tool.
+## 👤 Author
+
+**Gaurav Vyas**  
+- 🌐 **Academic Profile:** [socialpsychology.org/member/gaurav-vyas](https://www.socialpsychology.org/member/gaurav-vyas)  
+- 🔶 **Interactive Portfolio:** [realgauravvyas.github.io](https://realgauravvyas.github.io/)  
+- 🐙 **GitHub:** [@realgauravvyas](https://github.com/realgauravvyas)  
+- 🪰 **Full Connectomics Suite:** [realgauravvyas.github.io/connectomics](https://realgauravvyas.github.io/connectomics/)
+
+---
+
+## 📄 License
+
+MIT License &copy; 2026 Gaurav Vyas. Open-source science for everyone.

@@ -2,7 +2,7 @@
   "name": "flymind",
   "version": "1.0.0",
   "description": "Interactive fruit fly connectome playground — poke real neural circuits, train a mushroom body, hear a courtship song. Built on published Drosophila connectomes.",
-  "repository": "github:<you>/flymind",
+  "repository": "github:realgauravvyas/connectomics",
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
